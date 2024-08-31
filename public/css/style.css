@@ -5,7 +5,7 @@
 }
 
 body{
-    background: #000;
+    background-color: #000;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -14,15 +14,10 @@ body{
     left: 0;
     top: 0;
     bottom: 0;
-    width: 300px;
-    background-color: #181818;
-    padding: 24px;
+    width: 200px;
+    background-color: #000;
+    padding: 0px 20px;
 }
-
-.sidebar .logo img{
-    width: 100px;
-}
-
 
 .sidebar .navigation ul{
     list-style: none;
@@ -140,7 +135,6 @@ body{
 .topbar{
     display: flex;
     justify-content: space-between;
-    background-color: #000;
     padding: 10px 30px;
 }
 
@@ -182,7 +176,8 @@ body{
 }
 
 .TM-PlayList {
-    padding: 0px 40px;
+    padding: 0px 30px;
+    background-image: linear-gradient( #252525, black);
 }
 
 .TM-PlayList h2{
@@ -201,7 +196,7 @@ body{
     min-width: 140px;
     width: 160px;
     padding: 15px;
-    background-color: #181818;
+    background-image: linear-gradient(purple, black);
     border-radius: 6px;
     cursor: pointer;
     transition: all ease 0.4s;
@@ -215,6 +210,17 @@ body{
     width: 100%;
     border-radius: 6px;
     margin-bottom: 10px;
+}
+
+.TM-PlayList .List .item .audio-control {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    color: white;
 }
 
 .TM-PlayList .List .item .play{
@@ -300,14 +306,6 @@ section{
     gap: 20px;
 }
 
-.playList .genres{
-    color: #fff;
-    background-color: #181818;
-    padding: 20px;
-    border-radius: 6px;
-    width: 100%;
-}
-
 .playList .genres .header,
 .playList .music-List .header{
     display: flex;
@@ -318,6 +316,19 @@ section{
 
 .playList .genres .header h5{
     font-size: 25px;
+    color: #fff;
+    padding: 7px 20px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.playList .genres .header h5:hover{
+    color: #fff;
 }
 
 .playList .genres .header a,
@@ -334,12 +345,13 @@ section{
 
 .playList .genres .items .item{
     padding: 20px 50px;
-    background-color: #333;
+    background-image: linear-gradient(#333,#272727, black);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 6px;
     cursor: pointer;
+    color: #fff;
 }
 
 section .nav-Links{
@@ -368,98 +380,13 @@ section .trending{
 
 section .trending .left .info{
     margin-top: 12px;
-    padding: 26px;
-}
-
-section .trending .left .info h2{
-    font-size: 56px;
     margin-bottom: 8px;
-}
-
-section .trending .left .info h4,
-section .trending .left .info h5{
-    display: inline;
-}
-
-section .trending .left .info h5{
-    margin-left: 12px;
-    color: #575757;
-}
-
-section .trending .left .info .buttons{
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-section .trending .left .info .buttons button{
-    padding: 12px 16px;
+    padding: 20px 50px;
+    border-radius: 10px;
     background-color: purple;
-    border: none;
-    border-radius: 14px;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
 }
 
-section .trending .left .info .buttons i{
-    color: red;
+section .trending .left .info p{
     font-size: 20px;
-    border: 2px solid #fff;
-    padding: 10px;
-    border-radius: 50%;
-}
-
-section .trending img{
-    width: 300px;
-    height: 300px;
-}
-
-section .items .item .info img{
-    width: 50px;
-    height: 50px;
-}
-
-section .items{
-    background-color: #181818;
-    padding: 20px;
-    color: #fff;
-    border-radius: 6px;
-    width: 65%;
-}
-
-section .items .item .info{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-section .items .item .info p{
-    color: #575757;
-    font-size: 12px;
-    font-weight: bold;
-    margin-top: 6px;
-}
-
-section .items .item .info,
-section .items .item .actions{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-section .items .item .info .actions p{
-    font-weight: bold;
-}
-
-section .items .item .info .actions .icon{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: purple;
-    padding: 6px;
-    border: 2px ;
-    border-radius: 6px;
+    margin-bottom: 8px;
 }
