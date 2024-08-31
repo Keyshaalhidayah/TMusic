@@ -16,7 +16,7 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/music', function () {
-    return view('musi');
+    return view('music');
 });
 
 
