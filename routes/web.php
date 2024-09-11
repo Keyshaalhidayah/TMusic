@@ -24,6 +24,10 @@ Route::get('/daftar', function () {
     return view('daftar');
 });
 
+Route::get('/musictime', function () {
+    return view('musictime');
+});
+
 Route::post('/login', [LoginController::class, 'check'])->name('login.check');
 Route::get('/logout', [LoginController::class, 'signOut'])->name('logout');
 Route::post('/register', [LoginController::class, 'register'])->name('register');
