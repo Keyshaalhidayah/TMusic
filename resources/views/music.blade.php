@@ -9,281 +9,287 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+    <!-- Sidebar -->
     <div class="sidebar">
         <div class="navigation">
-            <ul>
-                <li><a href="#home"><span class="fa fa-home"></span><span>Home</span></a></li>
-                <li><a href="#search"><span class="fa fa-search"></span><span>Search</span></a></li>
-                <li><a href="#library"><span class="fa fa-book"></span><span>Library</span></a></li>
-                <li><a href="#playlist"><span class="fa fa-list"></span><span>Create Playlist</span></a></li>
-                <li><a href="#"><span class="fa fa-heart"></span><span>Liked Songs</span></a></li>
-            </ul>
-        </div>
-
-        <div class="policies">
-            <ul>
-                <li><a href="#">Cookies</a></li>
-                <li><a href="#">Privacy</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="home" class="main-container">
-        <!-- Topbar and other content -->
-        <div class="TM-PlayList">
-            <div class="topbar">
-            <div class="topbar">
-            <div class="prev-next-button">
-                <button type="button" class="fa fas fa-chevron-left"></button>
-                <button type="button" class="fa fas fa-chevron-right"></button>
+            <div class="logo">
+                <h1>TM<span>usic</span></h1>
             </div>
-        </div>
+            <ul class="menu">
+                <li><i class="fas fa-home"></i> Home</li>
+                <li id="playlist-header">
+                    <i class="fas fa-bookmark"></i> Playlist
+                    <span id="arrow" class="arrow">&#x25BC;</span>
+                </li>
+                <ul class="playlist-items" id="playlist-items">
+                <li class="playlist-item">
+                    <div class="playlist-image">
+                    <img src="{{ asset('image/img1.jpeg') }}" alt="">
+                    </div>
+                    <span class="playlist-name">Vibes & Chill</span>
+                </li>
+                <li class="playlist-item">
+                    <div class="playlist-image">
+                    <img src="{{ asset('image/img1.jpeg') }}" alt="">
+                    </div>
+                    <span class="playlist-name">Morning Boost</span>
+                </li>
+                <li class="playlist-item">
+                    <div class="playlist-image">
+                    <img src="{{ asset('image/img1.jpeg') }}" alt="">
+                    </div>
+                    <span class="playlist-name">Rhythm & Energy</span>
+                </li>
+            </ul>
 
-            <div class="navbar">
-                <div class="menu">
-                    <button class="menu-button">
-                        <img src="{{ asset('image/webcam-toy-photo5.jpg') }}" alt="User Image">
-                        <!-- Dimas -->
-                        {{ Auth::user()->name }}
-                    </button>
-                </div>
-                <div class="logout">
+            <ul class="menu playlists">
+                <li><i class="fas fa-heart"></i> Liked Songs</li>
+                <li><i class="fas fa-headphones"></i> Hip Hop</li>
+                <li><i class="fas fa-music"></i> Jazz Vibes</li>
+                <li><i class="fas fa-chart-line"></i> Top 50</li>
+            </ul>
+            <a href="{{ route('create.playlist') }}">
+                <button class="sidebar-btn">+ Create Playlist</button>
+            </a>
+            <div class="logout">
                 <form action="{{ route('logout') }}" method="get">
                     @csrf
                     <button type="submit" class="logout-button">Logout</button>
                 </form>
+            </div>
+        </div>
+    </div>
+    
+    <div id="home" class="main-container">
+    <div class="TM-PlayList">
+            <div class="topbar">
+                <div class="prev-next-button">
+                    <button type="button" class="fa fas fa-chevron-left"></button>
+                    <button type="button" class="fa fas fa-chevron-right"></button>
+                </div>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Apa yang ingin kamu putar?" onfocus="showSearchResults()" onblur="hideSearchResults()">
+                    <button class="search-button"><i class="fa fa-search"></i></button>
+                </div>
+                <div class="search-results" id="search-results">
+                    <p>Pencarian terakhir</p>
+                    <ul>
+                        <li>
+                        <img src="{{ asset('image/img2.jpeg') }}" alt="">
+                            <div>
+                                <span>DJ VIRALLLL YANGG ASIKKK ASIKKK 😛😜</span><br>
+                                <small>intaaannn</small>
+                            </div>
+                        </li>
+                        <li>
+                        <img src="{{ asset('image/img2.jpeg') }}" alt="">
+                            <div>
+                                <span>BLACKPINK</span><br>
+                                <small>Artis</small>
+                            </div>
+                        </li>
+                        <li>
+                        <img src="{{ asset('image/img2.jpeg') }}" alt="">
+                            <div>
+                                <span>PLAYLIST ANGKOT GACORR WELL</span><br>
+                                <small>Soundd Asia</small>
+                            </div>
+                        </li>
+                        <!-- More items can go here -->
+                    </ul>
                 </div>
             </div>
-    </div>
+                <div class="navbar">
+                    <button class="menu-button">
+                        <img src="{{ asset('image/webcam-toy-photo5.jpg') }}" alt="User Image">
+                        <!-- Zura -->
+                        {{ Auth::user()->name }}
+                    </button>
+                </div>
+            </div>
     </div>
 
-        <!-- Pisahkan bagian TM-PlayList dan h2 -->
     <div id="playlist" class="playlist-section">
-        <section>
-                <div class="playList">
-                <div class="genres">
-                    <div class="header">
-                        <h5>Semua</h5>
-                    </div>
-                    <div class="items">
-                        <div class="item">
-                            <p>MusicFavorit</p>
-                        </div>
-                        <div class="item">
-                            <p>JawirMusic</p>
-                        </div>
-                        <div class="item">
-                            <p>K/Da </p>
-                        </div>
-                        <div class="item">
-                            <p>LikedSongs</p>
-                        </div>
-                        <div class="item">
-                            <p>DanceElectronicmix</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <h2>Dibuat Untuk Anda</h2>
-            <div class="List">
-            <div class="item">
-                    <img src="{{ asset('image/img4.png') }}" alt="">
-                    <div class="play">
-                    <span id="playPauseIcon" class="fa fa-play" onclick="toggleAudio('audio1', this)"></span>
-                    </div>
-                    <h4>Today Top</h4>
-                    <p>Bring Me To Life</p>
-                    <audio id="audio1" class="audio-control">
-                    <source src="{{ asset('audio/bringmetolife.mp3') }}" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                </div>
-                <div class="item">
-                    <img src="{{ asset('image/img3.png') }}" alt="">
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Recomendation</h4>
-                    <p>In The End</p>
-                </div>
-                <div class="item">
-                    <img src="{{ asset('image/img5.png') }}" alt="">
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Hits</h4>
-                    <p>See You Again</p>
-                </div>
-                <div class="item">
-                    <img src="{{ asset('image/img4.png') }}" alt="">
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Today Top</h4>
-                    <p>Bring Me To Life</p>
-                </div>
-                <div class="item">
-                    <img src="{{ asset('image/img3.png') }}" alt="">
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Recomendation</h4>
-                    <p>In The End</p>
-                </div>
-                <div class="item">
-                    <img src="{{ asset('image/img5.png') }}" alt="">
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Hits</h4>
-                    <p>See You Again</p>
-                </div>
+        <h2>Baru Saja Diputar</h2>
+        <div class="carousel">
+            <div class="album active">
+            <img src="{{ asset('image/img2.jpeg') }}" alt="">
+            <div class="album-info">
+                <h3>Echoes of Midnight</h3>
+                <p>Jon Hickman</p>
             </div>
-            <h2>Baru Saja Diputar</h2>
-            <div class="List">
+            <button class="play-button"></button>
+            </div>
+
+            <div class="album inactive">
+            <img src="{{ asset('image/img2.jpeg') }}" alt="">
+            <div class="album-info">
+                <h3>Another Album</h3>
+                <p>Artist Name</p>
+            </div>
+            <button class="play-button"></button>
+            </div>
+
+            <div class="album inactive">
+            <img src="{{ asset('image/img2.jpeg') }}" alt="">
+            <div class="album-info">
+                <h3>Next Album</h3>
+                <p>Artist Name</p>
+            </div>
+            <button class="play-button"></button>
+        </div>
+
+        <div class="genres">
+            <div class="header">
+                <h5>Genres</h5>
+                <a href="#">See all</a>
+            </div>
+            <div class="items">
                 <div class="item">
-                    <img src="{{ asset('image/img6.png') }}" alt="">
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Today Top</h4>
-                    <p>Lagu Ganteng</p>
+                    <p>Electro<br>Pop</p>
                 </div>
                 <div class="item">
-                    <img src="{{ asset('image/img1.jpeg') }}" alt="">
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Recomendation</h4>
-                    <p>Galau</p>
+                    <p>Dance<br>Beat</p>
                 </div>
                 <div class="item">
-                    <img src="{{ asset('image/img2.jpeg') }}" alt="">
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Hits</h4>
-                    <p>pop mix</p>
+                    <p>Clubhouse<br>Remix</p>
                 </div>
                 <div class="item">
-                    <img src="{{ asset('image/img6.png') }}" alt="">
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Today Top</h4>
-                    <p>Lagu Ganteng</p>
+                    <p>Hip Hop<br>Rap</p>
                 </div>
                 <div class="item">
-                    <img src="{{ asset('image/img1.jpeg') }}" alt="">
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Recomendation</h4>
-                    <p>Galau</p>
+                    <p>Alternative<br>Indie</p>
                 </div>
-                <div class="item" include="musictime.blade.php">
-                    <img src="{{ asset('image/img2.jpeg') }}" alt="">
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Hits</h4>
-                    <p>pop mix</p>
+                <div class="item">
+                    <p>Classical<br>Period</p>
                 </div>
             </div>
         </div>
-        <!-- Main content -->
-        <main>
-            <header>
-                <div id="search" class="Search">
-                    <span class="fa fa-magnifying-glass"></span>
-                    <input type="text" placeholder="Type here to search">
-                </div>
-
-            </header>
-        </main>
-
-        <!-- Section for search -->
-        <div class="search-results">
-    <h2>Top Results</h2>
-    <div class="result-items">
-            <div class="item">
-            <img src="{{ asset('image/img2.jpeg') }}" alt="">
-                <div class="info">
-                    <h4>Artist Name</h4>
-                    <p>Artist</p>
-                </div>
-                <div class="play-icon">
-                    <span class="fa fa-play"></span>
-                </div>
-            </div>
-            <div class="item">
-            <img src="{{ asset('image/img2.jpeg') }}" alt="">
-                <div class="info">
-                    <h4>Song Title</h4>
-                    <p>Song • Artist Name</p>
-                </div>
-                <div class="play-icon">
-                    <span class="fa fa-play"></span>
-                </div>
-            </div>
-            <div class="item">
-            <img src="{{ asset('image/img2.jpeg') }}" alt="">
-                <div class="info">
-                    <h4>Podcast Title</h4>
-                    <p>Podcast</p>
-                </div>
-                <div class="play-icon">
-                    <span class="fa fa-play"></span>
-                </div>
-            </div>
-            <!-- Tambahkan lebih banyak item di sini -->
-            <div class="item">
-            <img src="{{ asset('image/img2.jpeg') }}" alt="">
-                <div class="info">
-                    <h4>Song Title 2</h4>
-                    <p>Song • Artist Name</p>
-                </div>
-                <div class="play-icon">
-                    <span class="fa fa-play"></span>
-                </div>
-            </div>
-            <div class="item">
-            <img src="{{ asset('image/img2.jpeg') }}" alt="">
-                <div class="info">
-                    <h4>Artist Name 2</h4>
-                    <p>Artist</p>
-                </div>
-                <div class="play-icon">
-                    <span class="fa fa-play"></span>
-                </div>
-            </div>
-            <div class="item">
-            <img src="{{ asset('image/img2.jpeg') }}" alt="">
-                <div class="info">
-                    <h4>Podcast Title 2</h4>
-                    <p>Podcast</p>
-                </div>
-                <div class="play-icon">
-                    <span class="fa fa-play"></span>
-                </div>
-            </div>
     </div>
-    <!-- tampilan play music -->
 
-    <script src="https://kit.fontawesome.com/ef9a692198.js" crossorigin="anonymous"></script>
-    <script>
-        function toggleAudio(audioId, iconElement) {
-            var audio = document.getElementById(audioId);
-            if (audio.paused) {
-                audio.play();
-                iconElement.classList.remove('fa-play');
-                iconElement.classList.add('fa-pause');
-            } else {
-                audio.pause();
-                iconElement.classList.remove('fa-pause');
-                iconElement.classList.add('fa-play');
-            }
-        }
-    </script>
+
+    <section class="categories-section">
+        <h2>Select Categories</h2>
+            <div class="categories">
+                <button class="category active">All</button>
+                <button class="category">Relax</button>
+                <button class="category">Sad</button>
+                <button class="category">Party</button>
+                <button class="category">Romance</button>
+                <button class="category">Energetic</button>
+                <button class="category">Relaxing</button>
+                <button class="category">Jazz</button>
+                <button class="category">Alternative</button>
+                <button class="scroll-arrow">&#10095;</button> <!-- Right arrow -->
+            </div>
+    </section>
+
+    <!-- Popular Songs Section -->
+    <section class="popular-songs-section">
+            <h2>Popular songs</h2>
+            <div class="song-grid">
+                <div class="song">
+                    <div class="song-thumbnail">
+                    <img src="{{ asset('image/img6.png') }}" alt="">
+                    </div>
+                    <div class="song-info">
+                        <h3>Golden Days</h3>
+                        <p>Felix Carter</p>
+                    </div>
+                </div>
+                <div class="song">
+                    <div class="song-thumbnail">
+                    <img src="{{ asset('image/img6.png') }}" alt="">
+                    </div>
+                    <div class="song-info">
+                        <h3>Fading Horizon</h3>
+                        <p>Ella Hunt</p>
+                    </div>
+                </div>
+                <div class="song">
+                    <div class="song-thumbnail">
+                    <img src="{{ asset('image/img6.png') }}" alt="">
+                    </div>
+                    <div class="song-info">
+                        <h3>Waves of Time</h3>
+                        <p>Lana Rivers</p>
+                    </div>
+                </div>
+                <div class="song">
+                    <div class="song-thumbnail">
+                    <img src="{{ asset('image/img6.png') }}" alt="">
+                    </div>
+                    <div class="song-info">
+                        <h3>Electric Dreams</h3>
+                        <p>Mia Lowell</p>
+                    </div>
+                </div>
+                <div class="song">
+                    <div class="song-thumbnail">
+                    <img src="{{ asset('image/img6.png') }}" alt="">
+                    </div>
+                    <div class="song-info">
+                        <h3>Shadows & Light</h3>
+                        <p>Ryan Miles</p>
+                    </div>
+                </div>
+            </div>
+    </section>
 </body>
+<script>
+    //playlist//
+    document.getElementById("playlist-header").addEventListener("click", function() {
+        const playlistItems = document.getElementById("playlist-items");
+        const arrow = document.getElementById("arrow");
+
+        if (playlistItems.classList.contains("visible")) {
+            playlistItems.classList.remove("visible");
+            arrow.innerHTML = "&#x25BC;";  // Down arrow
+        } else {
+            playlistItems.classList.add("visible");
+            arrow.innerHTML = "&#x25B2;";  // Up arrow
+        }
+    });
+
+    const albums = document.querySelectorAll('.album');
+    const carousel = document.querySelector('.carousel');
+
+    albums.forEach((album, index) => {
+      album.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent click from propagating to the document
+        // Remove 'active' class from all albums
+        albums.forEach(a => a.classList.remove('active'));
+        albums.forEach(a => a.classList.add('inactive'));
+        
+        // Add 'active' class to the clicked album
+        album.classList.remove('inactive');
+        album.classList.add('active');
+      });
+    });
+
+    // Listen for clicks outside the carousel to reset the album states
+    document.addEventListener('click', () => {
+      albums.forEach(album => {
+        album.classList.remove('active');
+        album.classList.add('inactive');
+      });
+    });
+
+    function showSearchResults() {
+        const searchResults = document.getElementById('search-results');
+        searchResults.style.opacity = '1';
+        searchResults.style.transform = 'translateY(0)';
+        searchResults.style.visibility = 'visible';
+    }
+
+    function hideSearchResults() {
+        const searchResults = document.getElementById('search-results');
+        setTimeout(() => {
+            searchResults.style.opacity = '0';
+            searchResults.style.transform = 'translateY(-10px)';
+            searchResults.style.visibility = 'hidden';
+        }, 200); // small delay to avoid immediate hide on blur
+    }
+  </script>
 </html>

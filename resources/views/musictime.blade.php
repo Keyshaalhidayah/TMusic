@@ -25,13 +25,43 @@
                         <span>To exit full screen, press <kbd>Esc</kbd></span>
                     </div>
             </div>
-            
-    <div class="music-player">
-        <div class="track-info">
-            <img src="{{ asset('image/img2.jpeg') }}" alt="Album-cover">
-            <p>lirik</p>
-        </div>
-    </div>
+
+            <div class="trending">
+                <div class="left">
+                    <h5>Trending New Song</h5>
+                    <div class="info">
+                        <h2>Lost Emotions</h2>
+                        <h4>Rion Clarke</h4>
+                        <h5>63 Million Plays</h5>
+                        <div class="buttons">
+                            <button>Listen Now</button>
+                            <i class='bx bxs-heart'></i>
+                        </div>
+                    </div>
+                </div>
+                <img src="{{ asset('image/img2.jpeg') }}" alt="">
+            </div>
+
+            <div class="top-section">
+                    <div class="header">
+                        <h5>Player</h5>
+                        <i class="bx bxs-playlist"></i>
+                    </div>
+                    <div class="song-info">
+                        <img src="assets/player.png">
+                        <div class="description">
+                            <h3>Ripple Echoes</h3>
+                            <h5>Kael Fischer</h5>
+                            <p>Best of 2024</p>
+                        </div>
+                        <div class="progress">
+                            <p>02:45</p>
+                            <div class="active-line"></div>
+                            <div class="deactive-line"></div>
+                            <p>01:02</p>
+                        </div>
+                    </div>
+                </div>`
     </div>
     </div>
 </body>
